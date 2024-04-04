@@ -1,7 +1,7 @@
 const init = async () => {
   // 1. Se llama a la API con la siguiente URL https://buty619.github.io/pricing.json que traera
   // toda la información para luego inyectarla en el HTML realizando una petición GET para obtener dicha data.
-    const url = "https://buty619.github.io/pricing.json";
+  const url = "https://buty619.github.io/pricing.json";
   const jsonData = await fetch(url);
   const { basic, eco, pro, business } = await jsonData.json();
 
@@ -16,7 +16,7 @@ const init = async () => {
   basicCardTitle.innerHTML = basic.name;
 
   // 2.1.2 Se selecciona el precio y se inyecta el valor obtenido de la API en la tag span correspondiente.
-    const basicCardPrice = basicCard.querySelector(".price-title");
+  const basicCardPrice = basicCard.querySelector(".price-title");
   const basicCardPriceSpan = basicCardPrice.querySelector("span");
   basicCardPriceSpan.innerHTML = basic.price;
 
@@ -27,7 +27,7 @@ const init = async () => {
   basicCardDiscountSpan.innerHTML = `Save ${basic.discount}`;
 
   // 2.1.4 Por ultimo se completa la informacion de las caracteristicas del plan
-  //utilizando un array con los elementos li y recorriendolo con la función map para 
+  //utilizando un array con los elementos li y recorriendolo con la función map para
   //cambiar el contenido de cada elemento li por la correspondiente caracteristica del plan.
   const basicCardList = basicCard.querySelector("ul");
   const basicCardElementList = basicCardList.querySelectorAll("li");
@@ -58,7 +58,7 @@ const init = async () => {
 
   // 3. Por ultimo, se agrega una accion a los botones de cada card que nos dirije la pagina `/payment` que
   // envia como query params el nombre del plan y el precio.
-Object.entries(apiData).map(([section, data]) => {
+  Object.entries(apiData).map(([section, data]) => {
     const card = document.querySelector(`.pricing-card.${section}`);
     const cardButton = card.querySelector(".buy-now");
     cardButton.href = `/payment.html?name=${data.name}&price=$${data.price}`;
